@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableCaching  //开启缓存
 public class SpringStarterTestApplication {
 
+	//1212
 	public static void main(String[] args) {
 		SpringApplication.run(SpringStarterTestApplication.class, args);
 	}
