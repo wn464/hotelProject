@@ -23,12 +23,6 @@ public class CommentBean {
 	public UserBean getUser() {
 		return user;
 	}
-	
-	
-	
-	
-	
-	
 	public void setUser(UserBean user) {
 		this.user = user;
 	}
@@ -50,10 +44,6 @@ public class CommentBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	@Override
-	public String toString() {
-		return "CommentBean [id=" + id + ", user=" + user + ", food=" + food + ", date=" + date + ", message=" + message
-				+ "]";
-	}
+	
 	
 }
