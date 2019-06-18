@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.ICommentDao">
+<resultMap type="CommentBean" id="map">
+<id column="id" property="id"/>
+<result column="date" property="date"/>
+<result column="message" property="message"/>
+<association property="user" column="user" select="com.project.dao.IUserDao.findById"/>
+<association property="food" column="food" select="com.project.dao.IFoodDao.findById"/>
+</resultMap>
+ <select id="findCountByFoodId" parameterType="int" resultType="int">
+ select count(*) from comment where food = #{id};
+ </select>
+ <select id="findByFoodId" parameterType="int" resultMap="map">
+ select * from comment where food = #{id};
+ </select>
+<insert id="addComment" parameterType="CommentBean">
+insert comment (user,food,date,message) values (#{user.id},#{food.id},#{date},#{message});
+</insert>
+</mapper>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title th:title="${food.name}">赛博朋克-2077</title>
+		<script src="/js/jquery-3.4.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	</head>
+	<body>
+		<div class="row " style="margin-top: 50px;">
+			<div class="col-md-10 col-md-offset-1">
+				<p class="text-center"  >商品详细</p>
+				
+				<div>
+					<div class="row" >
+						<div class="col-md-5 col-md-offset-1">
+							<img src="/img/1535097086_262447.jpg" style="height: 200px;" >
+						</div>
+						<div class="col-md-5 col-md-offset-1">
+							<p th:text="${food.name}">赛博朋克-2007</p>
+							<p th:text="${food.type.name}">类别：游戏</p>
+							<p th:text="'价格：￥'+(${food.prince})">价格：￥325</p>
+						</div>
+					</div>
+					<!-- 评论表格 -->
+					<div class="col-md-12 ">
+						<table class="table table-striped table-hover table-bordered">
+							<thead>
+								<tr>
+									<th>评论人</th>
+									<th>评论时间</th>
+									<th>评论内容</th>
+								</tr>
+							</thead>
+							<tbody id="commentTableTbody">
+								<tr th:each="comment, iterstat : ${list}">
+									<td th:text="${comment.user.name}">该用户不存在</td>
+									<td th:text="${comment.date}">2019-06-13</td>
+									<td th:text="${comment.message}">鸽鸽鸽</td>
+								</tr>
+								
+							</tbody>
+							
+						</table>
+					</div>
+					
+					
+				</div>
+			
+			<form id="commentform">
+				<div class="form-group">
+					<textarea rows="6" cols="50" name="message" id="message"></textarea>
+				</div>
+				<div id="tips"></div>
+				<input type="button" class="btn btn-default" value="评论"  onclick="postcomment()"/>
+				<a class="btn btn-default" href="/index">跳转主页</a>
+			</form>
+				
+			</div>
+		</div>
+		<script >
+		var id =  [[${food.id}]];
+		function postcomment(){
+			var patt = /^[\s]+$/;
+			var commentform = $("#commentform").serialize();
+			var message = $("#message").val()
+			if(patt.test(message) || message=="" ){
+				$("#tips").html("无实际内容");
+				return;
+			}
+			$.ajax({
+				url:"/good/"+id,
+				type:"put",
+				data:commentform,
+				success:function(mes){
+					if(mes==0){
+						$("#tips").html("发送失败，请稍后重试");
+					}else{
+						patchgood();
+					}
+				}
+			
+			})
+		}
+		function patchgood(){
+			$.ajax({
+				url:"/good/"+id,
+				type:"patch",
+				success:function(mes1){
+					var commentTableTbody = $("#commentTableTbody");
+					var str = '';
+					for (var i = 0; i < mes1.length; i++) {
+						str+="<tr><td>"+mes1[i].user.name
+						+"</td><td>"+mes1[i].date
+						+"</td><td>"+mes1[i].message+"</td></tr>";
+					}
+					commentTableTbody.html(str);
+				}
+			})
+		}
+		</script>
+	</body>
+</html>

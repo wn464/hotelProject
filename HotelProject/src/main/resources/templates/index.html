@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>小小书屋</title>
+		<!-- 核心包 -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+	</head>
+	<body>
+		
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2>欢迎来到小小书屋</h2>
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>商品名</th>
+							<th>单价</th>
+							<th>类别</th>
+							<th>评论</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr onclick="" th:onclick="'good('+(${food.id})+')'" th:each="food,iterStat : ${list}">
+							<td th:text=${food.name}>java入门到弃坑</td>
+							<td th:text=${food.prince}>10</td>
+							<td th:text=${food.type.name}>书籍</td>
+							<td th:text='${food.commentNum}'>+999</td>
+						</tr>
+					</tbody>
+					
+				</table>
+			</div>
+		</div>
+		<script >
+		function good(id) {
+			window.open("/good/"+id);
+		}
+		</script>
+	</body>
+</html>

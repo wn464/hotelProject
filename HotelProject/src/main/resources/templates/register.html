@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>小小书屋-注册</title>
+		<!-- 核心包 -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+		
+		
+		
+		
+		
+	</head>
+	<body>
+		<div class="row">
+		  <form class="form-horizontal col-md-6 col-md-offset-3" id="registerform">
+		    <div class="form-group">
+		  	<label for="username" class="col-sm-2 control-label">登录账号</label>
+		  	<div class="col-sm-10">
+		  	  <input type="text" class="form-control" id="username" name="name" placeholder="登录名">
+		  	</div>
+		    </div>
+		    <div class="form-group">
+		  	<label for="inputPassword" class="col-sm-2 control-label">密码</label>
+		  	<div class="col-sm-10">
+		  	  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="密码">
+		  	</div>
+				<div class="form-group">
+				<label for="inputPassword" class="col-sm-2 control-label">确认密码</label>
+				<div class="col-sm-10">
+				  <input type="password" class="form-control" id="reinputPassword" placeholder="确认密码">
+				</div>
+		    </div>
+		    <div class="form-group">
+		  	<div class="col-sm-offset-2 col-sm-10">
+		  	  <div class="checkbox">
+		  		<label>
+		  		  <input type="checkbox">记住我
+		  		</label>
+		  	  </div>
+		  	</div>
+		    </div>
+		    
+		    <div class="form-group">
+		    <p id="message"></p>
+		  	<div class="col-sm-offset-2 col-sm-10">
+		  	  <button type="button" class="btn btn-default" onclick="postuser()">登录</button>
+		  	</div>
+		    </div>
+		  </form>
+		 
+		</div>
+		
+		<script >
+		function postuser(){ 
+			var registerform = $("#registerform").serialize();
+			var username = $("#username").val();
+			var inputPassword = $("#inputPassword").val();
+			var reinputPassword = $("#reinputPassword").val();
+			var message =  $("#message");
+			if(username="" ||  inputPassword=""){
+				message.html("账号名和密码不能为空");
+				return;
+			}
+			if(inputPassword != reinputPassword){
+				message.html("两次密码不一致");
+				return;
+			}
+			$.ajax({
+				url:"/register",
+				type:"post",
+				data:registerform,
+				success:function(mes){
+					location.load(mes);
+				}
+			})
+		}
+		</script>
+	</body>
+</html>
