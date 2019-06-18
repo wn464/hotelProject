@@ -38,9 +38,7 @@ public class CommentBean {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getMessage() {
-		return message;
-	}
+
 	
 	
 	
