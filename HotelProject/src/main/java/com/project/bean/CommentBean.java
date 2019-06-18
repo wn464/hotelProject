@@ -23,6 +23,12 @@ public class CommentBean {
 	public UserBean getUser() {
 		return user;
 	}
+	
+	
+	
+	
+	
+	
 	public void setUser(UserBean user) {
 		this.user = user;
 	}
