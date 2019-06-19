@@ -28,6 +28,7 @@ public class CommentBean {
 	}
 	public void name() {
 		//shuchu
+		//11
 		System.out.println(11);
 	}
 	
