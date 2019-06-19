@@ -3,7 +3,7 @@ package com.project.bean;
 import javax.validation.constraints.NotBlank;
 
 public class FoodBean {
-
+	//1212
 	@NotBlank(message = "id不能为空")
 	private int id;
 	private String name;
