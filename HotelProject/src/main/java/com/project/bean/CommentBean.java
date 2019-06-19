@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 public class CommentBean {
 
-	private int id;
+	//private int id;
 	
 	private UserBean user;
 	@NotBlank(message = "商品不能为空")
