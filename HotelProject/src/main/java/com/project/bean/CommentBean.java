@@ -3,7 +3,7 @@ package com.project.bean;
 import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
-
+//123
 public class CommentBean {
 
 	private int id;
