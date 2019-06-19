@@ -3,7 +3,7 @@ package com.project.bean;
 import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
-//12345
+
 public class CommentBean {
 
 	private int id;
@@ -26,8 +26,9 @@ public class CommentBean {
 	public void setUser(UserBean user) {
 		this.user = user;
 	}
-	public FoodBean getFood() {
-		return food;
+	public void name() {
+		//shuchu
+		System.out.println(11);
 	}
 	
 	
