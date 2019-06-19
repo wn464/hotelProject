@@ -13,7 +13,7 @@ public class TestFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("正在处理请求");
+		
 		chain.doFilter(request, response);
 	}
 

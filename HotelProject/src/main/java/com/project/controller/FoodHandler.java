@@ -60,7 +60,7 @@ public class FoodHandler {
 		System.out.println(message);
 		int uid = (int) session.getAttribute("uid");
 		CommentBean comment = new CommentBean();
-		comment.setMessage(message);
+		
 		Date date = new Date(System.currentTimeMillis());
 		comment.setDate(date);
 		FoodBean food = new FoodBean();
